@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\Listing;
 use App\Models\Transaction;
-use Illuminate\Database\Seeder;
+use App\Models\User;
+use App\Models\Listing;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Eloquent\Factories\Sequence;
+use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,16 +16,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
 
         User::factory()->create([
             'name' => 'Admin Nidejia',
             'email' => 'admin@admin.com',
-            'role' => 'admin',
+            'role' => 'admin'
         ]);
+
         $users = User::factory(10)->create();
         $listings = Listing::factory(10)->create();
-        $transactions = Transaction::factory(10)
+
+        Transaction::factory(10)
             ->state(
                 new Sequence(
                     fn(Sequence $sequence) => [
